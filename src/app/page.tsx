@@ -4,9 +4,8 @@ import Layout from './components/Layout';
 import React, { useState, useEffect } from 'react';
 import ShowTask from "@/app/components/task/ShowTask";
 import FormInput from "@/app/components/task/FormInput";
-import { getAll } from './api/task/route';
 import { useAuth } from "@/app/context/AuthContext";
-import { useRouter } from 'next/navigation';
+import {getAll} from "@/app/service/taskRepository";
 
 
 interface DataItem {
@@ -17,7 +16,6 @@ interface DataItem {
 
 const Home: React.FC = () => {
     const { access_token } = useAuth();
-    const router = useRouter();
     const [data, setData] = useState<DataItem[]>([]);
     const [id, setId] = useState('');
     const [title, setTitle] = useState('');

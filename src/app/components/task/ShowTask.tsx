@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import {updateCompleted, deleteTask} from "@/app/api/task/route";
+import React from 'react';
+import { updateCompleted, deleteTask } from "@/app/service/taskRepository";
 import {useAuth} from "@/app/context/AuthContext";
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 interface ShowTaskProps {
     data: { _id: string; title: string; completed: boolean }[];
@@ -12,11 +10,10 @@ interface ShowTaskProps {
 }
 
 const ShowTask: React.FC<ShowTaskProps> = ({data, onUpdate, onDelete, onEdit}) => {
-
     const {access_token} = useAuth();
-
     const changeCompleted = async (id: string, completed: boolean) => {
         try {
+            console.log(id,completed)
             const task = await updateCompleted(access_token, completed, id);
             onUpdate(task);
         } catch (error) {
@@ -35,7 +32,7 @@ const ShowTask: React.FC<ShowTaskProps> = ({data, onUpdate, onDelete, onEdit}) =
         onEdit(id, title);
     };
     return (
-        <div className="mt-8 flow-root">
+        <div className="mt-8 flow-root" >
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                     <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">

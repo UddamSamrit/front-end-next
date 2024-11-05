@@ -5,11 +5,11 @@ FROM node:20 AS build
 WORKDIR /app
 
 # Copy application files and install dependencies
-COPY ./front-end-next/package*.json ./
+COPY ./package*.json ./
 RUN npm install
 
 # Copy the rest of the application files
-COPY ./front-end-next ./
+COPY ./ ./
 
 # Build the Next.js application
 RUN npm run build

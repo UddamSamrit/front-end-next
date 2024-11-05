@@ -1,10 +1,11 @@
 "use client";
 
 import {useEffect, useState} from 'react';
-import {login} from '../../api/auth/route';
 import {useAuth} from '../../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
+import Image from "next/image";
+import { login } from "@/app/service/userRepository";
 
 const Login = () => {
     const router = useRouter();
@@ -21,9 +22,11 @@ const Login = () => {
         checkExit();
     }, [access_token]);
 
-    const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const { accessToken, refreshToken , user } = await login(username, password);
+
+         const { accessToken, refreshToken , user } = await login(username, password);
+
         document.cookie = `access_token=${accessToken}; path=/; max-age=3600`;
         document.cookie = `refresh_token=${refreshToken}; path=/; max-age=${7 * 24 * 60 * 60}`;
         loginUser(accessToken, refreshToken, user);
@@ -34,15 +37,17 @@ const Login = () => {
         <div>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <img className="mx-auto h-10 w-auto"
-                         src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
+                    <Image className="mx-auto h-10 w-auto"
+                           width={500}
+                           height={500}
+                           src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
                          alt="Your Company"/>
                     <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your
                         account</h2>
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" onSubmit={handleSignup}>
+                    <form className="space-y-6" onSubmit={handleLogin}>
                         <div>
                             <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">Username</label>
                             <div className="mt-2">

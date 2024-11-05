@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
+import Image from "next/image";
 
 
 
@@ -21,8 +22,10 @@ const Header: React.FC = () => {
                 <div className="flex lg:flex-1">
                     <Link href="#" className="-m-1.5 p-1.5">
                         <span className="sr-only">Your Company</span>
-                        <img className="h-8 w-auto"
-                             src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt=""/>
+                        <Image className="h-8 w-auto"
+                               width={200}
+                               height={200}
+                             src="/assets/samrituddam.jpg" alt=""/>
                     </Link>
                 </div>
                 <div className="flex lg:hidden">
@@ -43,7 +46,7 @@ const Header: React.FC = () => {
                     <Link href="#" className="text-sm/6 font-semibold text-gray-900">Company</Link>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <span>{ user?.username } </span> <button onClick={handleLogout} className="text-sm/6 font-semibold text-gray-900"> | Logout</button>
+                    <span>{ user?.username } </span> <button onClick={ handleLogout } className="text-sm/6 font-semibold text-gray-900"> | Logout</button>
                 </div>
             </nav>
 
@@ -54,8 +57,10 @@ const Header: React.FC = () => {
                     <div className="flex items-center justify-between">
                         <Link href="#" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
-                            <img className="h-8 w-auto"
-                                 src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt=""/>
+                            <Image className="h-8 w-auto"
+                                   width={200}
+                                   height={200}
+                                 src="/samrituddam.jpeg" alt=""/>
                         </Link>
                         <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700">
                             <span className="sr-only">Close menu</span>

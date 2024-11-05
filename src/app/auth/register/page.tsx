@@ -1,10 +1,11 @@
 "use client";
 
 import {useEffect, useState} from 'react';
-import {login, register} from '../../api/auth/route';
 import {useAuth} from '../../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
+import Image from "next/image";
+import { register, login } from "@/app/service/userRepository";
 
 const Login = () => {
     const router = useRouter();
@@ -26,16 +27,16 @@ const Login = () => {
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const { userRegister } = await register(displayName, email, username, password);
-            if (userRegister.username){
+            const { user } = await register(displayName, email, username, password);
+            if (user.username){
                 const { accessToken, refreshToken , user } = await login(username, password);
                 document.cookie = `access_token=${accessToken}; path=/; max-age=3600`;
                 document.cookie = `refresh_token=${refreshToken}; path=/; max-age=${7 * 24 * 60 * 60}`;
                 loginUser(accessToken, refreshToken, user);
                 router.push('/');
             }
-        }catch (e: any) {
-            alert("Error" + e.message);
+        }catch (error) {
+            console.log(error);
         }
 
     };
@@ -44,8 +45,10 @@ const Login = () => {
         <div>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <img className="mx-auto h-10 w-auto"
-                         src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
+                    <Image className="mx-auto h-10 w-auto"
+                         src="/assets/samrituddam.jpeg"
+                           width={500}
+                           height={500}
                          alt="Your Company"/>
                     <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your
                         account</h2>

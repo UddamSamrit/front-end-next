@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from "@/app/context/AuthContext";
-import {create, update} from "@/app/api/task/route";
+import {create, update} from "@/app/service/taskRepository";
 
 interface FormInputProps {
     _id: string;
@@ -9,7 +9,7 @@ interface FormInputProps {
     onChangeValue: (title: string) => void;
 }
 
-const FormInput: React.FC<FormInputProps> = ({ onSave, _id, title , onChangeValue}) => {
+const FormInput: React.FC<FormInputProps> = ({ _id, title ,onSave, onChangeValue}) => {
     const { access_token } = useAuth();
     const [loading, setLoading] = useState(false);
 
