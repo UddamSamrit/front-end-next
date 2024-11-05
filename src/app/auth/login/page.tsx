@@ -40,7 +40,7 @@ const Login = () => {
                     <Image className="mx-auto h-10 w-auto"
                            width={500}
                            height={500}
-                           src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
+                           src="/assets/samrituddam.jpeg"
                          alt="Your Company"/>
                     <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your
                         account</h2>

@@ -11,8 +11,7 @@ import Image from "next/image";
 const Header: React.FC = () => {
     const router = useRouter();
     const { user, logoutUser } = useAuth();
-    const handleLogout = (e: any) => {
-        e.preventDefault();
+    const handleLogout = () => {
         logoutUser();
         router.push('/auth/login');
     };
@@ -46,7 +45,10 @@ const Header: React.FC = () => {
                     <Link href="#" className="text-sm/6 font-semibold text-gray-900">Company</Link>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <span>{ user?.username } </span> <button onClick={ handleLogout } className="text-sm/6 font-semibold text-gray-900"> | Logout</button>
+                    <span>{ user?.username } </span>
+                    <button onClick={ handleLogout }
+                            className="text-sm/6 font-semibold text-gray-900"> | Logout
+                    </button>
                 </div>
             </nav>
 
