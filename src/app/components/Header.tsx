@@ -21,10 +21,11 @@ const Header: React.FC = () => {
                 <div className="flex lg:flex-1">
                     <Link href="#" className="-m-1.5 p-1.5">
                         <span className="sr-only">Your Company</span>
-                        <Image className="h-8 w-auto"
-                               width={200}
-                               height={200}
-                             src="/assets/samrituddam.jpg" alt=""/>
+                        <Image className="h-8 w-auto rounded-full"
+                               width={300}
+                               height={300}
+                               src="/assets/samrituddam.jpeg"
+                               alt=""/>
                     </Link>
                 </div>
                 <div className="flex lg:hidden">

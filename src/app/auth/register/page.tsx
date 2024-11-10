@@ -15,15 +15,6 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(() => {
-        const checkExit = async () => {
-            if (access_token) {
-                router.push('/');
-            }
-        };
-        checkExit();
-    }, [access_token]);
-
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -45,7 +36,7 @@ const Login = () => {
         <div>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <Image className="mx-auto h-10 w-auto"
+                    <Image className="mx-auto h-10 w-auto rounded-full"
                          src="/assets/samrituddam.jpeg"
                            width={500}
                            height={500}

@@ -11,15 +11,11 @@ axiosInstance.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
 
-        // if (error.response && error.response.status === 401 && !originalRequest._retry) {
-        console.log(error.status);
         if (error.response && error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
             const old_refresh_token = localStorage.getItem('refresh_token');
-            console.log(old_refresh_token);
             if (old_refresh_token) {
                 const response = await axios.post(`${API_URL}/auth/refresh`, { "refresh_token":old_refresh_token });
-                console.log(response)
 
                 const { newAccessToken } = response.data;
 

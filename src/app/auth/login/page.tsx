@@ -37,7 +37,7 @@ const Login = () => {
         <div>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <Image className="mx-auto h-10 w-auto"
+                    <Image className="mx-auto h-10 w-auto rounded-full"
                            width={500}
                            height={500}
                            src="/assets/samrituddam.jpeg"
