@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 import {useAuth} from '../../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { register, login } from "@/app/service/userRepository";
 
 const Login = () => {
     const router = useRouter();
-    const { access_token, loginUser } = useAuth();
+    const { loginUser } = useAuth();
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
