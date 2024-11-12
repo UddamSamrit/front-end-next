@@ -39,6 +39,7 @@ const FormInput: React.FC<FormInputProps> = ({ _id, title ,onSave, onChangeValue
             }
         }catch (error) {
             setLoading(false);
+            alert(error)
             console.error('Error fetching data:', error);
         }
     };

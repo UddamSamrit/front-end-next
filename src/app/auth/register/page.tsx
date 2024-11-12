@@ -20,11 +20,12 @@ const Login = () => {
         try {
             const { user } = await register(displayName, email, username, password);
             if (user.username){
-                const { accessToken, refreshToken , user } = await login(username, password);
-                document.cookie = `access_token=${accessToken}; path=/; max-age=3600`;
-                document.cookie = `refresh_token=${refreshToken}; path=/; max-age=${7 * 24 * 60 * 60}`;
-                loginUser(accessToken, refreshToken, user);
-                router.push('/');
+                router.push('/auth/login');
+                // const { accessToken, refreshToken , user } = await login(username, password);
+                // document.cookie = `access_token=${accessToken}; path=/; max-age=3600`;
+                // document.cookie = `refresh_token=${refreshToken}; path=/; max-age=${7 * 24 * 60 * 60}`;
+                // loginUser(accessToken, refreshToken, user);
+                // router.push('/');
             }
         }catch (error) {
             console.log(error);
